@@ -1,6 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Star, ArrowRight } from 'lucide-react';
+import heroBg from '../assets/hero-doces-alemanes.png';
+import doceiras from '../assets/doceiras-tradicao.png';
+import imgRedondinha from '../assets/doces-redondinha.jpg';
+import imgMelado from '../assets/doces-melado.jpg';
+import imgNatal from '../assets/doces-natal.jpg';
 
 const Home = () => {
   const highlights = [
@@ -8,21 +13,21 @@ const Home = () => {
       id: 'rosquinha-chocolate',
       name: 'Rosquinha de Chocolate',
       description: 'Doces amanteigados com cobertura de chocolate ao leite.',
-      image: 'https://picsum.photos/400/400?random=1',
+      image: imgRedondinha,
       category: 'biscoitos' as const
     },
     {
       id: 'doce-melado',
       name: 'Doce de Melado',
       description: 'Uma receita que une sabores intensos e a doçura do melado.',
-      image: 'https://picsum.photos/400/400?random=2',
+      image: imgMelado,
       category: 'biscoitos' as const
     },
     {
       id: 'doce-natal',
       name: 'Doce de Natal',
       description: 'Símbolo de resistência, vitalidade e renovação.',
-      image: 'https://picsum.photos/400/400?random=3',
+      image: imgNatal,
       category: 'biscoitos' as const
     }
   ];
@@ -54,7 +59,7 @@ const Home = () => {
       <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://picsum.photos/1920/1080?random=10" 
+            src={heroBg}
             alt="Doces Alemães Artesanais" 
             className="w-full h-full object-cover filter brightness-50"
           />
@@ -124,7 +129,7 @@ const Home = () => {
             <div className="md:w-1/2">
               <div className="relative">
                 <img 
-                  src="https://picsum.photos/600/400?random=20" 
+                  src={doceiras}
                   alt="Doceiras Rosen" 
                   className="rounded-lg shadow-xl"
                 />
