@@ -1,5 +1,7 @@
 import React from 'react';
 import { Heart, Award, Users, Clock } from 'lucide-react';
+import doceiras from '../assets/doceiras-tradicao.png';
+import docesTradicionais from '../assets/doces-tradicionais.png';
 
 const About = () => {
   return (
@@ -19,15 +21,13 @@ const About = () => {
           <div className="space-y-6 text-rosen-muted leading-relaxed">
             <h2 className="font-serif text-3xl font-bold text-rosen-dark">Tradição que Atravessa Gerações</h2>
             <p>
-              A história da Rosen começou na pequena cidade alemã de Baden-Württemberg, 
-              onde nossa bisavó Rosa desenvolvia receitas que conquistavam toda a vizinhança. 
+              A história da Rosen começou na pequena cidade brasileira de origem alemã, Pomerode, 
+              onde nossa bisavó desenvolvia receitas que conquistavam toda a vizinhança. 
               Suas técnicas tradicionais e o carinho especial que colocava em cada doce 
               tornaram-se a base da nossa identidade.
             </p>
             <p>
-              Quando a família imigrou para o Brasil, trouxe consigo não apenas as receitas, 
-              mas toda a paixão pela arte da confeitaria alemã. Cada geração adaptou-se ao 
-              novo lar, mas sempre manteve viva a essência dos sabores tradicionais.
+              Cada geração adaptou-se às novas tendências, mas sempre manteve viva a essência dos sabores tradicionais.
             </p>
             <p>
               Hoje, continuamos essa tradição com o mesmo amor e dedicação, preparando 
@@ -35,14 +35,15 @@ const About = () => {
               nossos produtos únicos e especiais.
             </p>
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          {/* Mudança aqui: grid-cols-1 para celular, md:grid-cols-2 para computador */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <img 
-              src="https://picsum.photos/400/500?random=30" 
-              alt="Cozinha Antiga" 
-              className="rounded-lg shadow-lg w-full h-full object-cover transform translate-y-8"
+              src={docesTradicionais} 
+              alt="Nossos doces" 
+              className="rounded-lg shadow-lg w-full h-full object-cover md:transform md:translate-y-8"
             />
             <img 
-              src="https://picsum.photos/400/500?random=31" 
+              src={doceiras}
               alt="Doceiras Atuais" 
               className="rounded-lg shadow-lg w-full h-full object-cover"
             />

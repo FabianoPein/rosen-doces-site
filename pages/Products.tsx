@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
 import { Product } from '../types';
+import imgLuisen from '../assets/luisenKekse.png';
+import imgNatal from '../assets/doces-natal.jpg';
+import imgMelado from '../assets/doces-melado.jpg';
+import imgMel from '../assets/doces-mel.jpg';
+import imgNinho from '../assets/doces-leite-ninho.jpg';
+import imgRosquinha from '../assets/doces-redondinha.jpg';
+import imgFerradura from '../assets/doces-ferradura.jpg';
+import imgGoiabinha from '../assets/doces-goiabinha.jpg';
+
 
 const Products = () => {
   const [filter, setFilter] = useState<string>('todos');
@@ -7,60 +16,60 @@ const Products = () => {
   // Removed prices from the local data representation for the view
   const products: Omit<Product, 'price'>[] = [
     {
-      id: 'stollen',
-      name: 'Stollen Tradicional',
-      description: 'Pão doce alemão com frutas cristalizadas e marzipã.',
-      category: 'bolos',
-      image: 'https://picsum.photos/400/400?random=11'
-    },
-    {
-      id: 'gugelhupf',
-      name: 'Gugelhupf',
-      description: 'Bolo tradicional austríaco com formato característico.',
-      category: 'bolos',
-      image: 'https://picsum.photos/400/400?random=12'
-    },
-    {
-      id: 'lebkuchen',
-      name: 'Lebkuchen Tradicional',
-      description: 'Biscoitos de gengibre com especiarias alemãs autênticas.',
-      category: 'biscoitos',
-      image: 'https://picsum.photos/400/400?random=13'
-    },
-    {
-      id: 'zimtsterne',
-      name: 'Zimtsterne',
-      description: 'Biscoitos de canela em formato de estrela.',
-      category: 'biscoitos',
-      image: 'https://picsum.photos/400/400?random=14'
-    },
-    {
-      id: 'torta-floresta',
-      name: 'Schwarzwälder Kirschtorte',
-      description: 'Tradicional torta da Floresta Negra com cerejas.',
-      category: 'tortas',
-      image: 'https://picsum.photos/400/400?random=15'
-    },
-    {
-      id: 'strudel',
-      name: 'Strudel de Maçã',
-      description: 'Massa folhada crocante com recheio de maçãs e canela.',
-      category: 'tortas',
-      image: 'https://picsum.photos/400/400?random=16'
-    },
-    {
-      id: 'marzipa',
-      name: 'Marzipã Artesanal',
-      description: 'Doce de amêndoas moldado à mão em formatos tradicionais.',
+      id: 'luisen',
+      name: 'Luisenkekse',
+      description: 'A receita que viajou da Alemanha direto para nossa família!',
       category: 'doces-finos',
-      image: 'https://picsum.photos/400/400?random=17'
+      image: imgLuisen
     },
     {
-      id: 'pralines',
-      name: 'Pralinés Alemães',
-      description: 'Chocolates finos com recheios tradicionais.',
+      id: 'natal',
+      name: 'Bolacha de Natal',
+      description: 'Os ramos do pinheiro 🎄 simbolizam resistência, vitalidade e renovação, pois mantém suas folhas verdes durante o ano todo, mesmo nas estações mais frias',
+      category: 'biscoitos',
+      image: imgNatal
+    },
+    {
+      id: 'melado',
+      name: 'Bolacha de Melado',
+      description: 'Bolacha de melado, uma receita que une sabores intensos e a doçura natural do melado. Essa iguaria conquista paladares há gerações 🥰',
+      category: 'biscoitos',
+      image: imgMelado
+    },
+    {
+      id: 'mel',
+      name: 'Bolacha de Mel',
+      description: 'Feitas com a receita tradicional da família, nossas bolachas de mel trazem o sabor e o aconchego das origens.',
+      category: 'biscoitos',
+      image: imgMel
+    },
+    {
+      id: 'ninho',
+      name: 'Cookies de Leite Ninho',
+      description: 'Conheça essa novidade deliciosa.',
       category: 'doces-finos',
-      image: 'https://picsum.photos/400/400?random=18'
+      image: imgNinho
+    },
+    {
+      id: 'redondinha',
+      name: 'Rosquinha de Chocolate',
+      description: 'Rosquinhas amanteigadas com cobertura de chocolate.',
+      category: 'doces-finos',
+      image: imgRosquinha
+    },
+    {
+      id: 'ferradura',
+      name: 'Ferradura de Chocolate',
+      description: 'Ferraduras amanteigadas com as pontas cobertas de chocolate.',
+      category: 'doces-finos',
+      image: imgFerradura
+    },
+    {
+      id: 'goiabinha',
+      name: 'Amanteigados com Goiabada',
+      description: 'Um café quentinho e nossas clássicas bolachinhas de goiabinha — a combinação perfeita pra adoçar o dia! ❤️',
+      category: 'biscoitos',
+      image: imgGoiabinha
     }
   ];
 
