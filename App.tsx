@@ -1,5 +1,6 @@
 import React from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { CartProvider } from './context/CartContext'; // Importar
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -18,18 +19,20 @@ const ScrollToTop = () => {
 
 const App = () => {
   return (
-    <HashRouter>
-      <ScrollToTop />
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/sobre" element={<About />} />
-          <Route path="/produtos" element={<Products />} />
-          <Route path="/novidades" element={<News />} />
-          <Route path="/contato" element={<Contact />} />
-        </Routes>
-      </Layout>
-    </HashRouter>
+    <CartProvider> {/* Envolvendo tudo aqui */}
+      <HashRouter>
+        <ScrollToTop />
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/sobre" element={<About />} />
+            <Route path="/produtos" element={<Products />} />
+            <Route path="/novidades" element={<News />} />
+            <Route path="/contato" element={<Contact />} />
+          </Routes>
+        </Layout>
+      </HashRouter>
+    </CartProvider>
   );
 };
 

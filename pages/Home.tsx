@@ -66,7 +66,7 @@ const Home = () => {
         </div>
         <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-1000">
           <h1 className="font-serif text-4xl md:text-6xl font-bold mb-6 text-shadow-lg leading-tight">
-            Tradição Alemã em <span className="text-rosen-gold">Cada Doce!</span>
+            Tradição e qualidade com <span className="text-rosen-gold">amor!</span>
           </h1>
           <p className="text-lg md:text-xl mb-8 text-gray-100 max-w-2xl mx-auto">
             Doces artesanais feitos com carinho, seguindo receitas tradicionais alemãs passadas de geração em geração.

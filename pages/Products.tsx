@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Product } from '../types';
+import { useCart } from '../context/CartContext'; // Importando o carrinho
+import { ShoppingCart } from 'lucide-react';
 import imgLuisen from '../assets/luisenKekse.png';
 import imgNatal from '../assets/doces-natal.jpg';
 import imgMelado from '../assets/doces-melado.jpg';
@@ -12,14 +14,16 @@ import imgGoiabinha from '../assets/doces-goiabinha.jpg';
 
 const Products = () => {
   const [filter, setFilter] = useState<string>('todos');
+  const { addToCart } = useCart(); // Hook para usar a função
 
-  // Removed prices from the local data representation for the view
-  const products: Omit<Product, 'price'>[] = [
+  // LISTA DE PRODUTOS COM PREÇOS REAIS
+  const products: Product[] = [
     {
       id: 'luisen',
       name: 'Luisenkekse',
       description: 'A receita que viajou da Alemanha direto para nossa família!',
       category: 'doces-finos',
+      price: 15.00, // Adicionei preço
       image: imgLuisen
     },
     {
@@ -27,6 +31,7 @@ const Products = () => {
       name: 'Bolacha de Natal',
       description: 'Os ramos do pinheiro 🎄 simbolizam resistência, vitalidade e renovação, pois mantém suas folhas verdes durante o ano todo, mesmo nas estações mais frias',
       category: 'biscoitos',
+      price: 12.00, // Adicionei preço
       image: imgNatal
     },
     {
@@ -34,6 +39,7 @@ const Products = () => {
       name: 'Bolacha de Melado',
       description: 'Bolacha de melado, uma receita que une sabores intensos e a doçura natural do melado. Essa iguaria conquista paladares há gerações 🥰',
       category: 'biscoitos',
+      price: 12.00, // Adicionei preço
       image: imgMelado
     },
     {
@@ -41,6 +47,7 @@ const Products = () => {
       name: 'Bolacha de Mel',
       description: 'Feitas com a receita tradicional da família, nossas bolachas de mel trazem o sabor e o aconchego das origens.',
       category: 'biscoitos',
+      price: 12.00,
       image: imgMel
     },
     {
@@ -48,6 +55,7 @@ const Products = () => {
       name: 'Cookies de Leite Ninho',
       description: 'Conheça essa novidade deliciosa.',
       category: 'doces-finos',
+      price: 15.00,
       image: imgNinho
     },
     {
@@ -55,6 +63,7 @@ const Products = () => {
       name: 'Rosquinha de Chocolate',
       description: 'Rosquinhas amanteigadas com cobertura de chocolate.',
       category: 'doces-finos',
+      price: 15.00, // Adicionei preço
       image: imgRosquinha
     },
     {
@@ -62,6 +71,7 @@ const Products = () => {
       name: 'Ferradura de Chocolate',
       description: 'Ferraduras amanteigadas com as pontas cobertas de chocolate.',
       category: 'doces-finos',
+      price: 15.00, // Adicionei preço
       image: imgFerradura
     },
     {
@@ -69,6 +79,7 @@ const Products = () => {
       name: 'Amanteigados com Goiabada',
       description: 'Um café quentinho e nossas clássicas bolachinhas de goiabinha — a combinação perfeita pra adoçar o dia! ❤️',
       category: 'biscoitos',
+      price: 12.00, // Adicionei preço
       image: imgGoiabinha
     }
   ];
@@ -118,7 +129,7 @@ const Products = () => {
         {/* Product Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {filteredProducts.map(product => (
-            <div key={product.id} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <div key={product.id} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
               <div className="relative h-64 overflow-hidden group">
                 <img 
                   src={product.image} 
@@ -131,6 +142,21 @@ const Products = () => {
                   <h3 className="font-serif text-lg font-bold text-rosen-dark mb-2 leading-tight">{product.name}</h3>
                   <p className="text-sm text-gray-600">{product.description}</p>
                 </div>
+
+                {/* Preço e Botão */}
+                <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+                  <span className="text-xl font-bold text-rosen-wine">
+                    {product.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                  </span>
+                  <button 
+                    onClick={() => addToCart(product)}
+                    className="bg-rosen-gold text-rosen-brown p-2 rounded-full hover:bg-yellow-500 transition-colors shadow-sm"
+                    title="Adicionar ao Carrinho"
+                  >
+                    <ShoppingCart size={20} />
+                  </button>
+                </div>
+
               </div>
             </div>
           ))}

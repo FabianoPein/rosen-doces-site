@@ -21,15 +21,17 @@ const About = () => {
           <div className="space-y-6 text-rosen-muted leading-relaxed">
             <h2 className="font-serif text-3xl font-bold text-rosen-dark">Tradição que Atravessa Gerações</h2>
             <p>
-              A história da Rosen começou na pequena cidade brasileira de origem alemã, Pomerode, 
-              onde nossa bisavó desenvolvia receitas que conquistavam toda a vizinhança. 
-              Suas técnicas tradicionais e o carinho especial que colocava em cada doce 
-              tornaram-se a base da nossa identidade.
+              A nossa história começou de forma simples, em casa. Tudo teve início quando começamos a produzir doces para a família. O sabor caseiro logo conquistou os vizinhos e,
+               de pedido em pedido, o hobby virou coisa séria. No começo, unimos forças com os parentes, mas o destino tinha outros planos. Com a crescente demanda aqui em Testo Central, 
+               decidimos focar na nossa comunidade e abrir nosso próprio espaço. Desde 1996, o que era uma produção caseira se transformou oficialmente na Rosen Doces Artesanais.              
             </p>
             <p>
-              Cada geração adaptou-se às novas tendências, mas sempre manteve viva a essência dos sabores tradicionais.
+              O segredo das nossas receitas vem de muito antes de 1996. É uma herança trazida pelos nossos imigrantes. Nossa mãe aprendeu a confeitaria
+               com a Oma, que aprendeu com a bisavó, que aprendeu com a tataravó, essa em questão também era doceira. Produzimos desde os clássicos amanteigados, bolacha de Natal, 
+               rosquinhas de chocolate, até resgatamos receitas antigas e raras como o Schneekuchen. Também inovamos com novos queridinhos, como os Cookies de Leite Ninho, mas sem nunca perder a essência.
+               Recentemente começamos a produzir o Luisenkekse.
             </p>
-            <p>
+            <p>   
               Hoje, continuamos essa tradição com o mesmo amor e dedicação, preparando 
               cada doce artesanalmente e mantendo vivos os segredos familiares que tornam 
               nossos produtos únicos e especiais.
