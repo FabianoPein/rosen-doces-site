@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Instagram, Facebook, Phone, MapPin, Mail, ShoppingCart } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import CartSidebar from './CartSidebar';
+import logoSite from '../assets/logo-rosen-site.png';
 
 const Layout = ({ children }: { children?: React.ReactNode }) => {
   const { cart, toggleCart } = useCart(); // Pegar funções do carrinho
@@ -25,14 +26,15 @@ const Layout = ({ children }: { children?: React.ReactNode }) => {
   return (
     <div className="min-h-screen flex flex-col bg-rosen-cream font-sans text-rosen-dark">
       {/* Header */}
-      <header className="sticky top-0 z-40 bg-rosen-brown shadow-lg">
+      <header className="sticky top-0 z-40 bg-[#8D2924] shadow-lg">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
           {/* Brand */}
           <Link to="/" className="flex items-center gap-2">
-            <div className="text-white font-serif font-bold text-2xl tracking-wider">
-              ROSEN
-              <span className="block text-xs font-sans font-normal text-rosen-gold tracking-widest uppercase">Doces Artesanais</span>
-            </div>
+            <img 
+              src={logoSite} 
+              alt="Rosen Doces Artesanais" 
+              className="h-12 md:h-16 w-auto object-contain transition-transform hover:scale-105" 
+            />
           </Link>
 
           {/* Desktop Nav */}
@@ -53,7 +55,7 @@ const Layout = ({ children }: { children?: React.ReactNode }) => {
           {/* Actions (Direita do Header) */}
           <div className="flex items-center gap-4">
 
-            {/* Ícone do WhatsApp no Header (Agora aqui!) */}
+            {/* Ícone do WhatsApp no Header */}
             <a
               href="https://wa.me/5547992210556"
               target="_blank"
@@ -111,8 +113,9 @@ const Layout = ({ children }: { children?: React.ReactNode }) => {
       {/* Footer */}
       <footer className="bg-rosen-dark text-white pt-12 pb-6">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            {/* Brand Section */}
+          {/* MUDANÇA AQUI: Alterado para 4 colunas (md:grid-cols-4) */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            {/* 1. Brand Section */}
             <div>
               <h3 className="font-serif text-xl mb-4 text-rosen-gold">Rosen Doces Artesanais</h3>
               <p className="text-gray-300 text-sm leading-relaxed mb-4">
@@ -120,7 +123,7 @@ const Layout = ({ children }: { children?: React.ReactNode }) => {
               </p>
             </div>
 
-            {/* Links */}
+            {/* 2. Links */}
             <div>
               <h4 className="font-serif text-lg mb-4 text-rosen-gold">Links Rápidos</h4>
               <ul className="space-y-2 text-sm text-gray-300">
@@ -132,7 +135,7 @@ const Layout = ({ children }: { children?: React.ReactNode }) => {
               </ul>
             </div>
 
-            {/* Contact */}
+            {/* 3. Contact */}
             <div>
               <h4 className="font-serif text-lg mb-4 text-rosen-gold">Contato</h4>
               <ul className="space-y-3 text-sm text-gray-300">
@@ -150,18 +153,40 @@ const Layout = ({ children }: { children?: React.ReactNode }) => {
                 </li>
               </ul>
             </div>
+
+            {/* 4. NOVA COLUNA: Redes Sociais */}
+            <div>
+              <h4 className="font-serif text-lg mb-4 text-rosen-gold">Redes Sociais</h4>
+              <p className="text-sm text-gray-300 mb-4">Siga nossas redes:</p>
+              <div className="flex gap-4">
+                <a 
+                  href="https://www.facebook.com/rosendoceriaartesanal" 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="bg-gray-800 p-2 rounded-full text-white hover:text-rosen-brown hover:bg-rosen-gold transition-all duration-300"
+                  title="Facebook"
+                >
+                  <Facebook size={24} />
+                </a>
+                <a 
+                  href="https://www.instagram.com/rosendoceria/" 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="bg-gray-800 p-2 rounded-full text-white hover:text-rosen-brown hover:bg-rosen-gold transition-all duration-300"
+                  title="Instagram"
+                >
+                  <Instagram size={24} />
+                </a>
+              </div>
+            </div>
+
           </div>
 
-          <div className="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-xs text-gray-400">&copy; {new Date().getFullYear()} Rosen Doces Artesanais. Todos os direitos reservados.</p>
-            <div className="flex gap-4">
-              <a href="https://facebook.com" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-rosen-gold transition-colors">
-                <Facebook size={20} />
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-rosen-gold transition-colors">
-                <Instagram size={20} />
-              </a>
-            </div>
+          <div className="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-center md:justify-between items-center gap-4">
+            <p className="text-xs text-gray-400 text-center md:text-left">
+              &copy; {new Date().getFullYear()} Rosen Doces Artesanais. Todos os direitos reservados.
+            </p>
+            {/* Ícones removidos daqui para não serem tapados pelo botão flutuante */}
           </div>
         </div>
       </footer>
@@ -169,7 +194,7 @@ const Layout = ({ children }: { children?: React.ReactNode }) => {
       {/* Sidebar do Carrinho (Funcionalidade) */}
       <CartSidebar />
 
-      {/* Botão Flutuante do CARRINHO (Agora aqui!) */}
+      {/* Botão Flutuante do CARRINHO */}
       <button 
         onClick={toggleCart} 
         className="fixed bottom-6 right-6 bg-rosen-gold text-rosen-brown p-4 rounded-full shadow-2xl hover:bg-yellow-500 transition-transform hover:scale-110 z-40 group"
