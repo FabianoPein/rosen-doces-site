@@ -6,8 +6,7 @@ import { X, Trash2, Plus, Minus, ShoppingBag, AlertCircle, Mail, CheckCircle } f
 const CartSidebar = () => {
   const { cart, removeFromCart, updateQuantity, cartTotal, isCartOpen, toggleCart, clearCart } = useCart();
   
-  // --- CONFIGURAÇÃO DO FORMSPREE ---
-  // Substitua "SEU_ID_FORMSPREE" pelo código real
+  // SEU ID REAL MANTIDO AQUI
   const [state, handleSubmit] = useForm("xojjeboa");
 
   const [name, setName] = useState('');
@@ -123,9 +122,9 @@ ${EMOJI.note} *Observações:* ${obs || 'Nenhuma'}`;
            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
            <div className="relative bg-white p-8 rounded-2xl shadow-2xl max-w-sm w-full text-center border-t-4 border-green-500">
              <div className="flex justify-center mb-4"><CheckCircle className="w-12 h-12 text-green-500" /></div>
-             <h3 className="font-serif font-bold text-2xl text-rosen-dark mb-2">Pedido Enviado!</h3>
+             <h3 className="font-serif font-bold text-2xl text-[#3B110F] mb-2">Pedido Enviado!</h3>
              <p className="text-gray-600 mb-6">Recebemos o seu pedido por e-mail. Entraremos em contato em breve para confirmar.</p>
-             <button onClick={handleSuccessClose} className="w-full bg-rosen-wine text-white font-bold py-3 rounded-xl hover:bg-rosen-dark transition-colors">Fechar</button>
+             <button onClick={handleSuccessClose} className="w-full bg-[#8D2924] text-white font-bold py-3 rounded-xl hover:bg-[#3B110F] transition-colors">Fechar</button>
            </div>
         </div>
       )}
@@ -136,9 +135,9 @@ ${EMOJI.note} *Observações:* ${obs || 'Nenhuma'}`;
           <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setShowError(false)}></div>
           <div className="relative bg-white p-8 rounded-2xl shadow-2xl max-w-sm w-full text-center border-t-4 border-red-500">
             <div className="flex justify-center mb-4"><AlertCircle className="w-10 h-10 text-red-500" /></div>
-            <h3 className="font-serif font-bold text-2xl text-rosen-dark mb-2">Dados Incompletos</h3>
+            <h3 className="font-serif font-bold text-2xl text-[#3B110F] mb-2">Dados Incompletos</h3>
             <p className="text-gray-600 mb-6">Por favor, verifique se preencheu o seu <b>nome</b>, a <b>data</b> e o <b>telefone completo</b>.</p>
-            <button onClick={() => setShowError(false)} className="w-full bg-rosen-wine text-white font-bold py-3 rounded-xl hover:bg-rosen-dark transition-colors">Voltar e Corrigir</button>
+            <button onClick={() => setShowError(false)} className="w-full bg-[#8D2924] text-white font-bold py-3 rounded-xl hover:bg-[#3B110F] transition-colors">Voltar e Corrigir</button>
           </div>
         </div>
       )}
@@ -146,9 +145,10 @@ ${EMOJI.note} *Observações:* ${obs || 'Nenhuma'}`;
       {/* Sidebar */}
       <div className="relative w-full max-w-md bg-white h-[100dvh] shadow-2xl flex flex-col animate-in slide-in-from-right duration-300">
         
-        <div className="p-5 bg-rosen-wine text-white flex justify-between items-center shadow-md flex-none">
+        {/* Cabeçalho do Carrinho (#8D2924) */}
+        <div className="p-5 bg-[#8D2924] text-white flex justify-between items-center shadow-md flex-none">
           <h2 className="text-xl font-serif font-bold flex items-center gap-2"><ShoppingBag size={20} /> Seu Pedido</h2>
-          <button onClick={toggleCart} className="hover:text-rosen-gold"><X size={24} /></button>
+          <button onClick={toggleCart} className="hover:text-[#E6B325]"><X size={24} /></button>
         </div>
 
         <div className="flex-1 overflow-y-auto flex flex-col">
@@ -156,18 +156,19 @@ ${EMOJI.note} *Observações:* ${obs || 'Nenhuma'}`;
             {cart.length === 0 ? (
                 <div className="text-center text-gray-500 mt-10">
                 <p>Seu carrinho está vazio 🥨</p>
-                <button onClick={toggleCart} className="mt-4 text-rosen-wine font-bold hover:underline">Voltar aos produtos</button>
+                <button onClick={toggleCart} className="mt-4 text-[#8D2924] font-bold hover:underline">Voltar aos produtos</button>
                 </div>
             ) : (
                 cart.map(item => (
                 <div key={item.id} className="flex gap-4 border-b border-gray-100 pb-4">
                     <img src={item.image} alt={item.name} className="w-16 h-16 rounded-lg object-cover" />
                     <div className="flex-1">
-                    <h3 className="font-bold text-rosen-dark text-sm">{item.name}</h3>
-                    <p className="text-rosen-wine font-bold text-sm">{formatMoney(item.price)}</p>
+                    <h3 className="font-bold text-[#3B110F] text-sm">{item.name}</h3>
+                    {/* Preço em Destaque (#8D2924) */}
+                    <p className="text-[#8D2924] font-bold text-sm">{formatMoney(item.price)}</p>
                     <div className="flex items-center gap-3 mt-2">
                         <button onClick={() => updateQuantity(item.id, item.quantity - 1)} className="p-1 rounded-full bg-gray-100 hover:bg-gray-200"><Minus size={14} /></button>
-                        <span className="text-sm font-medium w-4 text-center">{item.quantity}</span>
+                        <span className="text-sm font-medium w-4 text-center text-[#3B110F]">{item.quantity}</span>
                         <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="p-1 rounded-full bg-gray-100 hover:bg-gray-200"><Plus size={14} /></button>
                         <button onClick={() => removeFromCart(item.id)} className="ml-auto text-red-400 hover:text-red-600"><Trash2 size={16} /></button>
                     </div>
@@ -179,28 +180,29 @@ ${EMOJI.note} *Observações:* ${obs || 'Nenhuma'}`;
 
             {cart.length > 0 && (
             <form onSubmit={handleEmailSubmit} className="p-5 bg-gray-50 border-t border-gray-200 space-y-3 flex-none">
-                <h3 className="font-bold text-rosen-dark mb-2">Dados para entrega:</h3>
+                <h3 className="font-bold text-[#3B110F] mb-2">Dados para entrega:</h3>
                 
-                <input type="text" name="nome" placeholder="Seu Nome *" value={name} onChange={e => setName(e.target.value)} className="w-full p-2 border rounded-lg text-sm focus:border-rosen-gold outline-none focus:ring-1 focus:ring-rosen-gold" />
+                <input type="text" name="nome" placeholder="Seu Nome *" value={name} onChange={e => setName(e.target.value)} className="w-full p-2 border rounded-lg text-base focus:border-[#E6B325] outline-none focus:ring-1 focus:ring-[#E6B325]" />
                 
-                <div className="grid grid-cols-2 gap-2">
+                {/* Ajuste Mobile: Um embaixo do outro */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                     <input type="tel" name="telefone" maxLength={15} placeholder="(47) 99999-9999" value={phone} onChange={handlePhoneChange} 
-                        className={`w-full p-2 border rounded-lg text-sm focus:outline-none focus:ring-1 ${phone.length > 0 && phone.replace(/\D/g, "").length < 11 ? "border-red-300 focus:border-red-500 focus:ring-red-200" : "focus:border-rosen-gold focus:ring-rosen-gold"}`} />
-                    <input type="date" name="data_entrega" value={date} onChange={e => setDate(e.target.value)} className="w-full p-2 border rounded-lg text-sm focus:border-rosen-gold outline-none focus:ring-1 focus:ring-rosen-gold" />
+                        className={`w-full p-2 border rounded-lg text-base focus:outline-none focus:ring-1 ${phone.length > 0 && phone.replace(/\D/g, "").length < 11 ? "border-red-300 focus:border-red-500 focus:ring-red-200" : "focus:border-[#E6B325] focus:ring-[#E6B325]"}`} />
+                    <input type="date" name="data_entrega" value={date} onChange={e => setDate(e.target.value)} className="w-full p-2 border rounded-lg text-base focus:border-[#E6B325] outline-none focus:ring-1 focus:ring-[#E6B325]" />
                 </div>
                 
-                <textarea name="observacoes" placeholder="Observações (opcional)" rows={2} value={obs} onChange={e => setObs(e.target.value)} className="w-full p-2 border rounded-lg text-sm resize-none focus:border-rosen-gold outline-none focus:ring-1 focus:ring-rosen-gold" />
+                <textarea name="observacoes" placeholder="Observações (opcional)" rows={2} value={obs} onChange={e => setObs(e.target.value)} className="w-full p-2 border rounded-lg text-base resize-none focus:border-[#E6B325] outline-none focus:ring-1 focus:ring-[#E6B325]" />
 
                 <input type="hidden" name="resumo_pedido" value={itemsSummary} />
                 <input type="hidden" name="total_pagar" value={formatMoney(cartTotal)} />
 
-                <div className="flex justify-between items-center py-2 text-lg font-bold text-rosen-dark">
+                <div className="flex justify-between items-center py-2 text-lg font-bold text-[#3B110F]">
                     <span>Total:</span>
                     <span>{formatMoney(cartTotal)}</span>
                 </div>
 
                 <div className="space-y-3 pt-2">
-                    {/* Botão WhatsApp - Sempre visível */}
+                    {/* Botão WhatsApp */}
                     <button 
                         type="button" 
                         onClick={handleWhatsApp}
@@ -209,18 +211,18 @@ ${EMOJI.note} *Observações:* ${obs || 'Nenhuma'}`;
                         Enviar Pedido no WhatsApp 📲
                     </button>
 
-                    {/* Divisória - SÓ NO DESKTOP (hidden md:flex) */}
+                    {/* Divisória - SÓ NO DESKTOP */}
                     <div className="hidden md:flex relative py-1 items-center">
                         <div className="flex-grow border-t border-gray-300"></div>
                         <span className="flex-shrink-0 mx-4 text-gray-400 text-xs uppercase">ou envie por e-mail</span>
                         <div className="flex-grow border-t border-gray-300"></div>
                     </div>
 
-                    {/* Botão E-mail - SÓ NO DESKTOP (hidden md:flex) */}
+                    {/* Botão E-mail - SÓ NO DESKTOP (#8D2924) */}
                     <button 
                         type="submit"
                         disabled={state.submitting}
-                        className="hidden md:flex w-full bg-rosen-brown text-white py-3 rounded-xl font-bold hover:bg-rosen-wine transition-colors shadow items-center justify-center gap-2 disabled:opacity-50"
+                        className="hidden md:flex w-full bg-[#8D2924] text-white py-3 rounded-xl font-bold hover:bg-[#3B110F] transition-colors shadow items-center justify-center gap-2 disabled:opacity-50"
                     >
                         {state.submitting ? 'Enviando...' : <><Mail size={18} /> Enviar Pedido por E-mail</>}
                     </button>

@@ -63,7 +63,7 @@ const Products = () => {
       name: 'Rosquinha de Chocolate',
       description: 'Rosquinhas amanteigadas com cobertura de chocolate.',
       category: 'doces-finos',
-      price: 15.00, // Adicionei preço
+      price: 15.00, 
       image: imgRosquinha
     },
     {
@@ -71,7 +71,7 @@ const Products = () => {
       name: 'Ferradura de Chocolate',
       description: 'Ferraduras amanteigadas com as pontas cobertas de chocolate.',
       category: 'doces-finos',
-      price: 15.00, // Adicionei preço
+      price: 15.00,
       image: imgFerradura
     },
     {
@@ -79,7 +79,7 @@ const Products = () => {
       name: 'Amanteigados com Goiabada',
       description: 'Um café quentinho e nossas clássicas bolachinhas de goiabinha — a combinação perfeita pra adoçar o dia! ❤️',
       category: 'biscoitos',
-      price: 12.00, // Adicionei preço
+      price: 12.00,
       image: imgGoiabinha
     }
   ];
@@ -99,7 +99,7 @@ const Products = () => {
   return (
     <div className="pb-20">
       {/* Page Hero */}
-      <section className="bg-rosen-wine py-16 text-center text-white mb-12">
+      <section className="bg-[#C95A54] py-16 text-center text-white mb-12">
         <div className="container mx-auto px-4">
           <h1 className="font-serif text-4xl md:text-5xl font-bold mb-4">Nossos Produtos</h1>
           <p className="text-lg opacity-90 max-w-2xl mx-auto">
@@ -109,22 +109,26 @@ const Products = () => {
       </section>
 
       <div className="container mx-auto px-4">
-        {/* Filters */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map(cat => (
-            <button
-              key={cat.id}
-              onClick={() => setFilter(cat.id)}
-              className={`px-6 py-2 rounded-full border-2 transition-all font-medium ${
-                filter === cat.id
-                  ? 'bg-rosen-brown text-white border-rosen-brown'
-                  : 'bg-transparent text-rosen-brown border-rosen-brown hover:bg-rosen-brown hover:text-white'
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
-        </div>
+  {/* Filters */}
+  <div className="flex flex-wrap justify-center gap-4 mb-12">
+    {categories.map(cat => (
+      <button
+        key={cat.id}
+        onClick={() => setFilter(cat.id)}
+        className={`px-6 py-2 rounded-full border-2 transition-all font-medium ${
+          filter === cat.id
+            /* ESTADO ATIVO (CLICADO): Fundo e Borda com a nova cor #C95A54 */
+            ? 'bg-[#C95A54] text-white border-[#8D2924]'
+            
+            /* ESTADO INATIVO: Texto e Borda com a nova cor, Fundo transparente */
+            /* HOVER: Ao passar o mouse, preenche com a nova cor */
+            : 'bg-transparent text-[#C95A54] border-[#8D2924] hover:bg-[#C95A54] hover:text-white'
+        }`}
+      >
+        {cat.label}
+      </button>
+    ))}
+  </div>
 
         {/* Product Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">

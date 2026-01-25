@@ -69,7 +69,7 @@ const News = () => {
 
   return (
     <div className="pb-20">
-      <section className="bg-gray-100 py-16 text-center text-rosen-dark mb-12">
+      <section className="bg-[#C95A54] py-16 text-center text-white mb-12">
         <div className="container mx-auto px-4">
           <h1 className="font-serif text-4xl md:text-5xl font-bold mb-4">Novidades & Curiosidades</h1>
           <p className="text-lg opacity-80 max-w-2xl mx-auto">
