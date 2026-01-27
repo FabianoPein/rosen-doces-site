@@ -1,22 +1,18 @@
 import React from 'react';
 import { Heart, Award, Users, Clock } from 'lucide-react';
-import doceiras from '../assets/doceiras-tradicao.png';
-import docesTradicionais from '../assets/doces-tradicionais.png';
+import doceiras from '../assets/doceiras-tradicao.webp';
+import docesTradicionais from '../assets/doces-tradicionais.webp';
+import PageHero from '@/components/PageHero';
 
 const About = () => {
   return (
     // Fundo Creme Harmonizado (#FDF6F0)
     <div className="bg-[#FDF6F0] pb-20">
-      
-      {/* Hero Section - COR DA MARCA (#A63E39) */}
-      <section className="bg-[#C95A54] py-16 text-center text-white mb-12 shadow-lg">
-        <div className="container mx-auto px-4">
-          <h1 className="font-serif text-4xl md:text-5xl font-bold mb-4">Nossa História</h1>
-          <p className="text-lg opacity-90 max-w-2xl mx-auto">
-            Uma jornada de tradição, sabor e amor que começou há gerações.
-          </p>
-        </div>
-      </section>
+
+      <PageHero 
+        title="Nossa História" 
+        subtitle="Uma jornada de tradição, sabor e amor que começou há gerações." 
+      />
 
       <div className="container mx-auto px-4">
         {/* Main Content */}

@@ -8,6 +8,10 @@ import Products from './pages/Products';
 import News from './pages/News';
 import Contact from './pages/Contact';
 
+// --- NOVIDADE 1: Imports do Toastify ---
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; // O CSS obrigatório
+
 // Scroll to top wrapper
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -20,6 +24,23 @@ const ScrollToTop = () => {
 const App = () => {
   return (
     <CartProvider> {/* Envolvendo tudo aqui */}
+
+      {/* --- NOVIDADE 2: O Componente que exibe as notificações --- */}
+      {/* Configurei para ficar no canto inferior direito, estilo "App Moderno" */}
+      <ToastContainer 
+        position="bottom-right"
+        autoClose={3000} // Fecha sozinho em 3 segundos
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored" // Fica mais bonito com cores sólidas
+        aria-label="Notificações do Sistema"
+      />
+
       <HashRouter>
         <ScrollToTop />
         <Layout>

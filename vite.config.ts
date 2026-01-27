@@ -18,6 +18,17 @@ export default defineConfig(({ mode }) => {
         alias: {
           '@': path.resolve(__dirname, '.'),
         }
+      },
+      // ADICIONADO: Otimização de build
+      build: {
+        rollupOptions: {
+          output: {
+            manualChunks: {
+              vendor: ['react', 'react-dom', 'react-router-dom'],
+              icons: ['lucide-react']
+            }
+          }
+        }
       }
     };
 });

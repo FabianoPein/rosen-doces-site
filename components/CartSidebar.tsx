@@ -6,7 +6,7 @@ import { X, Trash2, Plus, Minus, ShoppingBag, AlertCircle, Mail, CheckCircle } f
 const CartSidebar = () => {
   const { cart, removeFromCart, updateQuantity, cartTotal, isCartOpen, toggleCart, clearCart } = useCart();
   
-  // SEU ID REAL MANTIDO AQUI
+  // ID REAL MANTIDO AQUI
   const [state, handleSubmit] = useForm("xojjeboa");
 
   const [name, setName] = useState('');

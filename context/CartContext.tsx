@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { Product } from '../types';
+// 1. Importar o toast
+import { toast } from 'react-toastify'
 
 // Definindo o formato do Item no Carrinho
 export interface CartItem extends Product {
@@ -28,18 +30,34 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     setCart(prev => {
       const existing = prev.find(item => item.id === product.id);
       if (existing) {
+        // Se já existe, só avisa que aumentou a quantidade
+        toast.info(`+1 ${product.name} no carrinho!`, {
+          style: { backgroundColor: '#FDF6F0', color: '#3B110F', borderLeft: '4px solid #C95A54' }
+        });
+
         return prev.map(item => 
           item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
         );
       }
+
+  // 2. DISPARAR O TOAST DE SUCESSO
+      // Aqui personalizamos para ficar com a cor da marca
+      toast.success(`${product.name} adicionado!`, {
+        style: { backgroundColor: '#C95A54', color: '#fff' }, // Fundo Vinho
+      });
+
       return [...prev, { ...product, quantity: 1 }];
     });
-    // setIsCartOpen(true); Abre o carrinho automaticamente
-  };
+    
+    // Opcional: Se quiser abrir o carrinho automaticamente, descomenta a linha abaixo
+    // setIsCartOpen(true); 
+  };    
+
 
   // Remover item
   const removeFromCart = (id: string) => {
     setCart(prev => prev.filter(item => item.id !== id));
+    toast.error('Produto removido.', { position: 'bottom-left' });
   };
 
   // Atualizar quantidade
@@ -48,7 +66,10 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     setCart(prev => prev.map(item => item.id === id ? { ...item, quantity: qty } : item));
   };
 
-  const clearCart = () => setCart([]);
+  const clearCart = () => {
+    setCart([]);
+    toast.warn('Carrinho esvaziado.');
+  };
   const toggleCart = () => setIsCartOpen(!isCartOpen);
 
   // Calcular Total

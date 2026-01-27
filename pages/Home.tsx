@@ -1,36 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Star, ArrowRight } from 'lucide-react';
-import heroBg from '../assets/hero-doces-alemanes.png';
-import doceiras from '../assets/doceiras-tradicao.png';
-import imgRedondinha from '../assets/doces-redondinha.jpg';
-import imgMelado from '../assets/doces-melado.jpg';
-import imgNatal from '../assets/doces-natal.jpg';
+import heroBg from '../assets/hero-doces-alemanes.webp';
+import doceiras from '../assets/doceiras-tradicao.webp';
+import ProductCard from '../components/ProductCard'; // O Card que criamos
+import { productsList } from '../data/products';    // A lista de dados central
+
 
 const Home = () => {
-  const highlights = [
-    {
-      id: 'rosquinha-chocolate',
-      name: 'Rosquinha de Chocolate',
-      description: 'Doces amanteigados com cobertura de chocolate ao leite.',
-      image: imgRedondinha,
-      category: 'biscoitos' as const
-    },
-    {
-      id: 'doce-melado',
-      name: 'Doce de Melado',
-      description: 'Uma receita que une sabores intensos e a doçura do melado.',
-      image: imgMelado,
-      category: 'biscoitos' as const
-    },
-    {
-      id: 'doce-natal',
-      name: 'Doce de Natal',
-      description: 'Símbolo de resistência, vitalidade e renovação.',
-      image: imgNatal,
-      category: 'biscoitos' as const
-    }
-  ];
+  const featuredProducts = productsList.filter(p => 
+    ['natal', 'melado', 'redondinha'].includes(p.id)
+  );
 
   const testimonials = [
     {
@@ -62,6 +42,9 @@ const Home = () => {
             src={heroBg}
             alt="Doces Alemães Artesanais" 
             className="w-full h-full object-cover filter brightness-50"
+            fetchPriority="high"
+            width="1920" // Adicionar dimensões ajuda no CLS (Layout Shift)
+            height="1080"
           />
         </div>
         <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-1000">
@@ -95,34 +78,29 @@ const Home = () => {
             <h2 className="font-serif text-4xl font-bold text-rosen-dark mb-4">Nossos Destaques</h2>
             <p className="text-rosen-muted text-lg">Conheça alguns dos nossos doces mais apreciados</p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            {highlights.map(product => (
-              <div key={product.id} className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group">
-                <div className="relative h-64 overflow-hidden">
-                  <img 
-                    src={product.image} 
-                    alt={product.name} 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="font-serif text-xl font-bold text-rosen-brown mb-2">{product.name}</h3>
-                  <p className="text-rosen-muted text-sm mb-4 min-h-[40px]">{product.description}</p>
-                </div>
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {featuredProducts.map((product) => (
+              <ProductCard
+               key={product.id} 
+               product={product} 
+               showBuyButton={false} // <--- ISSO ESCONDE O PREÇO E BOTÃO
+              />
             ))}
           </div>
 
-          <div className="text-center">
-            <Link to="/produtos" className="inline-flex items-center gap-2 text-rosen-wine font-bold border-b-2 border-rosen-wine hover:text-rosen-gold hover:border-rosen-gold transition-colors pb-1">
-              Ver todos os produtos <ArrowRight size={18} />
+          <div className="text-center mt-12">
+            <Link 
+              to="/produtos" 
+              className="inline-flex items-center gap-2 text-[#C95A54] font-bold hover:gap-4 transition-all group"
+            >
+              Ver todos os produtos <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
+
         </div>
       </section>
 
-      {/* About Preview */}
+      {/* About Section */}
       <section className="py-20 bg-gradient-to-br from-rosen-cream to-[#f0e6d2]">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center gap-12">

@@ -3,8 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Instagram, Facebook, Phone, MapPin, Mail, ShoppingCart } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import CartSidebar from './CartSidebar';
-// Mantendo o import da logo exatamente como está no seu arquivo
-import logoSite from '../assets/logo-rosen-site.png';
+import logoSite from '../assets/logo-rosen-site.webp';
 
 const Layout = ({ children }: { children?: React.ReactNode }) => {
   const { cart, toggleCart } = useCart(); 
@@ -35,6 +34,9 @@ const Layout = ({ children }: { children?: React.ReactNode }) => {
             <img 
               src={logoSite} 
               alt="Rosen Doces Artesanais" 
+              // ADICIONADO: width e height explícitos para o navegador reservar espaço
+              width="200" 
+              height="64"
               className="h-12 md:h-16 w-auto object-contain transition-transform hover:scale-105" 
             />
           </Link>
@@ -70,8 +72,9 @@ const Layout = ({ children }: { children?: React.ReactNode }) => {
 
             {/* Menu Mobile */}
             <button
-              className="md:hidden text-white"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden text-white"
+              aria-label="Abrir menu principal"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
